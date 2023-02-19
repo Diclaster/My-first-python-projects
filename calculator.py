@@ -7,7 +7,7 @@ root.title("Calc")
 root.resizable(False, False)
 lbl = Label(text='0', font=("Consolas", 21, "bold"), bg="black", foreground="white")
 lbl.place(x=11, y=50)
-btns = ['C', 'DEL', '*', '=', '1', '2', '3', '/', '4', '5', '6', '+', '7', '8', '9', '-', '(', '0', ')', 'x^2']
+btns = ['.', 'C', 'DEL', '*', '=', '1', '2', '3', '/', '4', '5', '6', '+', '7', '8', '9', '-', '(', '0', ')', 'x^2']
 
 
 def set_value(formula):
@@ -20,7 +20,7 @@ def logicalc(operator):
     elif operator == "DEL":
         lbl['text']=lbl['text'][0:-1]
     elif operator == 'x^2':
-        lbl['text']=str((eval(lbl['text'])) ** 2)
+        lbl['text']=str(eval(int(lbl['text']))**2)
     elif operator == "=":
         set_value(lbl['text'])
     else:
@@ -29,8 +29,8 @@ def logicalc(operator):
         lbl['text'] = lbl['text'] + operator
 
 
-x = 10
-y = 140
+x = 361
+y = 60
 for bt in btns:
     com = lambda x=bt: logicalc(x)
     Button(text=bt, bg='white', font=('consolas', 15), command=com).place(x=x, y=y, width=115, heigh=79)
@@ -39,3 +39,4 @@ for bt in btns:
         x = 10
         y += 81
 root.mainloop()
+
