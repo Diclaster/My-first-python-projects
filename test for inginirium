@@ -1,0 +1,23 @@
+from tkinter import *
+from random import randint
+
+def com():
+    canvas.delete('all')
+    n = randint(0, 2)
+    x = randint(10, 300)
+    y = randint(10, 300)
+    v = randint(30, 280)
+    if n == 0:
+        canvas.create_polygon(x, y, x + v,  y + v, abs(x - v), abs(y - v), fill='black')
+    elif n == 1:
+        canvas.create_rectangle(x, y, x + v, y + v, fill='black')
+    else:
+        canvas.create_oval(x, y, x + v, y + v, fill='black')
+
+root = Tk()
+root.geometry('700x700')
+canvas = Canvas(root, width=600, height=600, bg='white')
+canvas.pack()
+Button(root, text='reload', command=com, height=2, width=10, bg='black', fg='white').place(x=300, y=600)
+
+root.mainloop()
